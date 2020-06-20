@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<svg id="svg" viewBox="0 0 5 5" height="100" width="100" xmlns="http://www.w3.org/2000/svg" fill="#706e77">
+		</svg>
+	</body>
+	<style>
+body { 
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#svg {
+	background-color: #ececec;
+	padding: 10px;
+}
+	</style>
+	<script>
+		// SETUP
+		let svg = document.getElementById('svg'),
+			coord_first = [],
+			coord_middle = [],
+			coord_last = []
+
+		// GET COORDINATES
+		for (i=0; i<6; i++) {
+			coord_first[i] = {x: Math.floor(Math.random()*2), y: Math.floor(Math.random()*5)}
+		}
+		for (i=0; i<3; i++) {
+			coord_middle[i] = {x: 2, y: Math.floor(Math.random()*5)}
+		}
+		for (i=0; i<coord_first.length; i++) {
+			coord_last[i] = {x: 4 - coord_first[i].x, y: coord_first[i].y}
+		}
+
+		//DRAW FROM COORDINATES
+		for (i=0; i<6; i++) {
+			svg.innerHTML+= `<rect x="${coord_first[i].x}" y="${coord_first[i].y}" width="1" height="1"/>` 
+		}
+		for (i=0; i<3; i++) {
+			svg.innerHTML+= `<rect x="${coord_middle[i].x}" y="${coord_middle[i].y}" width="1" height="1" />` 
+		}
+		for (i=0; i<6; i++) {
+			svg.innerHTML+= `<rect x="${coord_last[i].x}" y="${coord_last[i].y}" width="1" height="1" />` 
+		}
+	</script>
+</html>
